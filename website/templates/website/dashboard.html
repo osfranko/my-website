@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Sure Success</title>
+
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+</head>
+<!-- FLOATING WHATSAPP + CALL BUTTON -->
+<div class="floating-buttons">
+
+    <a class="float-btn whatsapp-btn"
+       href="https://wa.me/2348035766979"
+       target="_blank">
+        💬
+    </a>
+
+    <a class="float-btn call-btn"
+       href="tel:+2348035766979">
+        📞
+    </a>
+
+</div>
+
+</body>
+</html>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">📊 Admin Dashboard</div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/contact">Contact</a>
+        <a href="/dashboard">Dashboard</a>
+    </nav>
+</header>
+
+<!-- DASHBOARD CONTENT -->
+<section style="padding:40px;">
+
+    <h1>📩 Student Enquiries</h1>
+
+    <p>Total Messages: {{ contacts|length }}</p>
+
+    <div style="margin-top:20px; display:grid; gap:15px;">
+
+        {% for c in contacts %}
+
+        <div style="
+            background:#f1f5f9;
+            padding:15px;
+            border-radius:10px;
+            border-left:5px solid #38bdf8;
+        ">
+
+            <h3>{{ c.name }}</h3>
+            <p><b>Phone:</b> {{ c.phone }}</p>
+            <p><b>Email:</b> {{ c.email }}</p>
+            <p><b>Program:</b> {{ c.program }}</p>
+            <p><b>Message:</b> {{ c.message }}</p>
+
+        </div>
+
+        {% empty %}
+            <p>No messages yet.</p>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+</body>
+</html>

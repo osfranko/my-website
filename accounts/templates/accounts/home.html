@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutoring Platform</title>
+</head>
+<body>
+
+    <h1>Welcome to Your Tutoring Platform 🚀</h1>
+
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }} 👋</p>
+        <a href="/logout/">Logout</a>
+    {% else %}
+        <a href="/login/">Login</a> |
+        <a href="/signup/">Sign Up</a>
+    {% endif %}
+
+</body>
+</html>

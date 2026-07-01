@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Sure Success Education Centre</title>
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+    <style>
+        /* ===== CONTACT PAGE WRAPPER ===== */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        .contact {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* ===== FORM LAYOUT (STACKED) ===== */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            background: #38bdf8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #0ea5e9;
+        }
+
+        /* ===== FLOATING BUTTONS ===== */
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 22px;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .call-btn {
+            background: #38bdf8;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background: rgba(0,0,0,0.3);
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">🌟 Sure Success</div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/contact/">Contact</a>
+        <a href="/dashboard/">Dashboard</a>
+    </nav>
+</header>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-buttons">
+
+    <a class="float-btn whatsapp-btn"
+       href="https://wa.me/2348035766979"
+       target="_blank">
+        💬
+    </a>
+
+    <a class="float-btn call-btn"
+       href="tel:+2348035766979">
+        📞
+    </a>
+
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact">
+
+    <h1 class="section-title">📩 Contact / Enroll Now</h1>
+
+    <p style="text-align:center; margin-bottom:20px;">
+        Fill the form below to enroll or request information about any program.
+    </p>
+
+    <form class="contact-form" method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Full Name" required>
+
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <input type="email" name="email" placeholder="Email (optional)">
+
+        <select name="program" required>
+            <option value="">Select Program</option>
+            <option value="waec">WAEC / NECO / JAMB</option>
+            <option value="igcse">IGCSE / GCSE</option>
+            <option value="ib">IB (International Baccalaureate)</option>
+            <option value="sat">SAT / PSAT</option>
+            <option value="ielts">IELTS / TOEFL</option>
+            <option value="alevel">A-Level</option>
+            <option value="gre">GRE / GMAT</option>
+            <option value="home">Home Tutoring</option>
+            <option value="online">Online Classes</option>
+        </select>
+
+        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Sure Success Education Centre</p>
+</footer>
+
+</body>
+</html>
