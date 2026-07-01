@@ -7,16 +7,15 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# ================= SECURITY =================
 SECRET_KEY = 'django-insecure-d_d3t=flt8stpliuki+1=vr5omkxv+$=+r5j#oak@!pfrcyd1('
 
-# ⚠️ PRODUCTION FIX
 DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
 
-# Application definition
+# ================= APPLICATIONS =================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -31,7 +30,7 @@ INSTALLED_APPS = [
 ]
 
 
-# ================= MIDDLEWARE (FIXED + WHITENOISE) =================
+# ================= MIDDLEWARE =================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -48,6 +47,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 
 
+# ================= TEMPLATES =================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -103,12 +103,19 @@ USE_I18N = True
 USE_TZ = True
 
 
-# ================= STATIC FILES (RENDER FIX) =================
+# ================= STATIC FILES =================
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-# ================= LOGIN SETTINGS =================
+# ================= LOGIN SYSTEM =================
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
