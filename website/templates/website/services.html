@@ -2,21 +2,172 @@
 
 {% block content %}
 
-<section class="hero" style="height: 50vh;">
-    <div class="hero-content">
-        <h1>Our Services</h1>
-        <p>Quality tutoring for all levels</p>
-    </div>
-</section>
+<style>
+    .services-landing {
+        min-height: 100vh;
+        background-image: url("/static/website/images/services-bg.png?v=10");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        padding-top: 115px;
+    }
+</style>
 
-<section>
-    <div class="grid">
+<div class="services-landing">
 
-        <div class="card">🏫 Physical Classes</div>
-        <div class="card">💻 Online Classes</div>
-        <div class="card">🏠 Home Tutoring</div>
+    <section class="hero">
+        <div class="hero-content">
 
-    </div>
-</section>
+            <h1 class="animated-title">
+                <span>Our</span>
+                <span>Services</span>
+            </h1>
+
+            <h3 class="hero-tagline">
+                Complete Academic Support for Every Learner
+            </h3>
+
+            <p class="hero-subtitle">
+                From private tutoring to lecture house programmes, sciences, languages,
+                social sciences, management subjects and international exam preparation.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="services-page">
+
+        <div class="service-grid">
+
+            <div class="service-box">
+                <div class="service-icon">🧪</div>
+                <h2>STEM & Sciences</h2>
+                <ul>
+                    <li>Biology</li>
+                    <li>Chemistry</li>
+                    <li>Physics</li>
+                    <li>Mathematics</li>
+                    <li>Further Mathematics</li>
+                    <li>Computer Science</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">🌍</div>
+                <h2>Languages</h2>
+                <ul>
+                    <li>English Language</li>
+                    <li>English Literature</li>
+                    <li>IELTS</li>
+                    <li>TOEFL</li>
+                    <li>German Language</li>
+                    <li>Italian Language</li>
+                    <li>French Language</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">🌎</div>
+                <h2>Social Sciences</h2>
+                <ul>
+                    <li>Geography</li>
+                    <li>Government</li>
+                    <li>Civic Education</li>
+                    <li>History</li>
+                    <li>Social Studies</li>
+                    <li>Religious Studies</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">📊</div>
+                <h2>Management Sciences</h2>
+                <ul>
+                    <li>Economics</li>
+                    <li>Commerce</li>
+                    <li>Accounting</li>
+                    <li>Business Studies</li>
+                    <li>Financial Accounting</li>
+                    <li>Marketing</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">👨‍🏫</div>
+                <h2>Private Home Tutoring</h2>
+                <ul>
+                    <li>Home Lessons</li>
+                    <li>One-on-One Tutoring</li>
+                    <li>Homework Support</li>
+                    <li>Weekend Lessons</li>
+                    <li>Holiday Coaching</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">🏫</div>
+                <h2>Lecture House</h2>
+                <ul>
+                    <li>WAEC</li>
+                    <li>NECO</li>
+                    <li>JAMB</li>
+                    <li>Mock Examinations</li>
+                    <li>Revision Classes</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">🌐</div>
+                <h2>International Programmes</h2>
+                <ul>
+                    <li>IGCSE</li>
+                    <li>GCSE</li>
+                    <li>IB</li>
+                    <li>SAT</li>
+                    <li>PSAT</li>
+                    <li>A-Level</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">💻</div>
+                <h2>Online Learning</h2>
+                <ul>
+                    <li>Live Classes</li>
+                    <li>Recorded Lessons</li>
+                    <li>Digital Resources</li>
+                    <li>Flexible Schedule</li>
+                    <li>International Students</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">🎯</div>
+                <h2>Academic Mentoring</h2>
+                <ul>
+                    <li>Study Skills</li>
+                    <li>Career Guidance</li>
+                    <li>Admission Support</li>
+                    <li>Time Management</li>
+                    <li>Examination Strategies</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="services-cta">
+        <h2>Need a Tutor or a Learning Programme?</h2>
+
+        <p>
+            Contact Sure Success Learning Hub today and let us help you choose the right academic support.
+        </p>
+
+        <a href="/contact/" class="btn-primary">Contact Us Today</a>
+    </section>
+
+</div>
 
 {% endblock %}

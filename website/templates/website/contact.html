@@ -1,179 +1,808 @@
+{% extends "website/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Contact - Sure Success Education Centre</title>
-    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+{% block title %}
+Contact Us | Sure Success Learning Hub
+{% endblock %}
 
-    <style>
-        /* ===== CONTACT PAGE WRAPPER ===== */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
-        }
+{% block content %}
 
-        .contact {
-            max-width: 800px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+<style>
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+/* ==========================================================
+   CONTACT PAGE ONLY
+========================================================== */
 
-        /* ===== FORM LAYOUT (STACKED) ===== */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: rgba(255,255,255,0.05);
-            padding: 25px;
-            border-radius: 12px;
-            backdrop-filter: blur(6px);
-        }
+.sslh-contact-page {
+    width: 100%;
+    min-height: 1150px;
 
-        .contact-form input,
-        .contact-form select,
-        .contact-form textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-            font-size: 15px;
-        }
+    position: relative;
+    overflow: hidden;
 
-        .contact-form button {
-            padding: 12px;
-            background: #38bdf8;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+    /* Extend white background across the whole screen */
+    background-color: #ffffff;
 
-        .contact-form button:hover {
-            background: #0ea5e9;
-        }
+    /* Correct contact background */
+    background-image:
+        url("{% static 'website/images/contact-bg.png' %}");
 
-        /* ===== FLOATING BUTTONS ===== */
-        .floating-buttons {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 999;
-        }
+    /* Keep the full branded image visible */
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
 
-        .float-btn {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 22px;
-            color: white;
-        }
 
-        .whatsapp-btn {
-            background: #25D366;
-        }
+/* Very light overlay only */
+.sslh-contact-page::before {
+    content: "";
 
-        .call-btn {
-            background: #38bdf8;
-        }
+    position: absolute;
+    inset: 0;
 
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            background: rgba(0,0,0,0.3);
-        }
-    </style>
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.01),
+            rgba(255, 255, 255, 0.03)
+        );
 
-</head>
+    pointer-events: none;
+}
 
-<body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">🌟 Sure Success</div>
+/* Everything above the background */
+.sslh-contact-inner {
+    position: relative;
+    z-index: 2;
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/contact/">Contact</a>
-        <a href="/dashboard/">Dashboard</a>
-    </nav>
-</header>
+    width: 100%;
 
-<!-- FLOATING BUTTONS -->
-<div class="floating-buttons">
+    padding:
+        35px
+        25px
+        300px;
+}
 
-    <a class="float-btn whatsapp-btn"
-       href="https://wa.me/2348035766979"
-       target="_blank">
-        💬
-    </a>
 
-    <a class="float-btn call-btn"
-       href="tel:+2348035766979">
-        📞
-    </a>
+/* ==========================================================
+   HERO
+========================================================== */
+
+.sslh-contact-hero {
+    width: 90%;
+    max-width: 800px;
+
+    margin:
+        0 auto
+        35px;
+
+    text-align: center;
+}
+
+
+.sslh-contact-hero h1 {
+    margin-bottom: 10px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            58px
+        );
+
+    font-weight: 900;
+
+    text-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.95);
+}
+
+
+.sslh-contact-tagline {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    padding:
+        9px
+        24px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #facc15,
+            #f59e0b
+        );
+
+    color: #07111f;
+
+    font-size:
+        clamp(
+            15px,
+            2vw,
+            20px
+        );
+
+    font-weight: 900;
+}
+
+
+.sslh-contact-hero p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 3px 9px
+        rgba(0, 0, 0, 0.95);
+}
+
+
+/* ==========================================================
+   CONTACT GRID
+   LEFT PANEL TO LEFT EDGE
+   FORM TO RIGHT EDGE
+========================================================== */
+
+.sslh-contact-grid {
+    width: calc(100% - 50px);
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 430px)
+        minmax(360px, 500px);
+
+    justify-content: space-between;
+
+    gap: 120px;
+
+    align-items: start;
+}
+
+
+/* ==========================================================
+   TRANSPARENT GLASS PANELS
+========================================================== */
+
+.sslh-contact-info,
+.sslh-contact-form {
+    width: 100%;
+
+    background:
+        rgba(
+            6,
+            27,
+            56,
+            0.18
+        );
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 14px 35px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+}
+
+
+/* ==========================================================
+   LEFT SIDE
+========================================================== */
+
+.sslh-contact-info {
+    padding: 20px;
+}
+
+
+.sslh-contact-info h2 {
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 3px 10px
+        rgba(
+            0,
+            0,
+            0,
+            0.95
+        );
+}
+
+
+.sslh-contact-intro {
+    margin-bottom: 15px;
+
+    color: #ffffff;
+
+    font-size: 12.5px;
+
+    line-height: 1.55;
+
+    font-weight: 600;
+
+    text-shadow:
+        0 2px 7px
+        rgba(
+            0,
+            0,
+            0,
+            0.95
+        );
+}
+
+
+/* ==========================================================
+   CONTACT CARDS
+========================================================== */
+
+.sslh-contact-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+
+    padding:
+        10px
+        12px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(
+            6,
+            27,
+            56,
+            0.30
+        );
+
+    border:
+        1px solid
+        rgba(
+            250,
+            204,
+            21,
+            0.40
+        );
+
+    color: #ffffff;
+}
+
+
+.sslh-contact-icon {
+    font-size: 19px;
+
+    flex-shrink: 0;
+}
+
+
+.sslh-contact-card strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #ffffff;
+
+    font-size: 12.5px;
+
+    font-weight: 900;
+}
+
+
+.sslh-contact-card p {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 11.5px;
+
+    line-height: 1.3;
+}
+
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+.sslh-contact-form {
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.sslh-contact-form input,
+.sslh-contact-form select,
+.sslh-contact-form textarea {
+    width: 100%;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.68
+        );
+
+    color: #111827;
+
+    font-size: 12.5px;
+
+    font-family: Arial, sans-serif;
+
+    transition: 0.3s ease;
+}
+
+
+.sslh-contact-form input,
+.sslh-contact-form select {
+    height: 41px;
+
+    padding:
+        0
+        13px;
+}
+
+
+.sslh-contact-form textarea {
+    min-height: 95px;
+
+    max-height: 130px;
+
+    padding:
+        12px
+        13px;
+
+    resize: vertical;
+}
+
+
+.sslh-contact-form input:focus,
+.sslh-contact-form select:focus,
+.sslh-contact-form textarea:focus {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.96
+        );
+
+    border-color: #facc15;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            250,
+            204,
+            21,
+            0.18
+        );
+}
+
+
+/* ==========================================================
+   SEND BUTTON
+========================================================== */
+
+.sslh-contact-form button {
+    height: 42px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #facc15,
+            #f59e0b
+        );
+
+    color: #07111f;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.sslh-contact-form button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 22px
+        rgba(
+            250,
+            204,
+            21,
+            0.32
+        );
+}
+
+
+/* ==========================================================
+   LARGE SCREENS
+========================================================== */
+
+@media (min-width: 1400px) {
+
+    .sslh-contact-grid {
+        width: calc(100% - 80px);
+
+        max-width: 1550px;
+
+        grid-template-columns:
+            430px
+            500px;
+
+        gap: 180px;
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1000px) {
+
+    .sslh-contact-grid {
+        width: 90%;
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        gap: 30px;
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 700px) {
+
+    .sslh-contact-page {
+        min-height: 1500px;
+
+        background-size: contain;
+
+        background-position: center top;
+    }
+
+
+    .sslh-contact-inner {
+        padding:
+            25px
+            12px
+            300px;
+    }
+
+
+    .sslh-contact-hero h1 {
+        font-size: 34px;
+    }
+
+
+    .sslh-contact-grid {
+        width: 94%;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .sslh-contact-info,
+    .sslh-contact-form {
+        max-width: 100%;
+
+        padding: 16px;
+    }
+
+}
+
+</style>
+
+
+<div class="sslh-contact-page">
+
+    <div class="sslh-contact-inner">
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="sslh-contact-hero">
+
+            <h1>Contact Us</h1>
+
+            <div class="sslh-contact-tagline">
+                Let's Help You Achieve Academic Excellence
+            </div>
+
+            <p>
+                Whether you need a private tutor, online classes,
+                examination preparation or academic guidance,
+                Sure Success Learning Hub is here to help.
+            </p>
+
+        </section>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="sslh-contact-grid">
+
+
+            <!-- ================= LEFT SIDE ================= -->
+
+            <div class="sslh-contact-info">
+
+                <h2>Get In Touch</h2>
+
+                <p class="sslh-contact-intro">
+                    Tell us what academic support you need and we will help
+                    you choose the right learning programme.
+                </p>
+
+
+                <div class="sslh-contact-card">
+
+                    <span class="sslh-contact-icon">
+                        📞
+                    </span>
+
+                    <div>
+
+                        <strong>Phone</strong>
+
+                        <p>
+                            +234 803 576 6979
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sslh-contact-card">
+
+                    <span class="sslh-contact-icon">
+                        📧
+                    </span>
+
+                    <div>
+
+                        <strong>Email</strong>
+
+                        <p>
+                            osfranko2002@gmail.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sslh-contact-card">
+
+                    <span class="sslh-contact-icon">
+                        🌍
+                    </span>
+
+                    <div>
+
+                        <strong>Location</strong>
+
+                        <p>
+                            Port Harcourt, Nigeria
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sslh-contact-card">
+
+                    <span class="sslh-contact-icon">
+                        💻
+                    </span>
+
+                    <div>
+
+                        <strong>Learning Mode</strong>
+
+                        <p>
+                            Physical • Home Tutoring • Online
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= FORM ================= -->
+
+            <form
+                class="sslh-contact-form"
+                method="POST"
+                action="/contact/"
+            >
+
+                {% csrf_token %}
+
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    required
+                >
+
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                >
+
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                >
+
+
+                <select
+                    name="program"
+                    required
+                >
+
+                    <option value="">
+                        Select Programme
+                    </option>
+
+                    <option value="WAEC / NECO / JAMB">
+                        WAEC / NECO / JAMB
+                    </option>
+
+                    <option value="IGCSE / GCSE">
+                        IGCSE / GCSE
+                    </option>
+
+                    <option value="IB Programme">
+                        IB Programme
+                    </option>
+
+                    <option value="SAT / PSAT">
+                        SAT / PSAT
+                    </option>
+
+                    <option value="IELTS / TOEFL">
+                        IELTS / TOEFL
+                    </option>
+
+                    <option value="A-Level">
+                        A-Level
+                    </option>
+
+                    <option value="GRE / GMAT">
+                        GRE / GMAT
+                    </option>
+
+                    <option value="German Language">
+                        German Language
+                    </option>
+
+                    <option value="French Language">
+                        French Language
+                    </option>
+
+                    <option value="Italian Language">
+                        Italian Language
+                    </option>
+
+                    <option value="Private Home Tutoring">
+                        Private Home Tutoring
+                    </option>
+
+                    <option value="Online Learning">
+                        Online Learning
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="Type your message here..."
+                ></textarea>
+
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </div>
 
-<!-- CONTACT SECTION -->
-<section class="contact">
-
-    <h1 class="section-title">📩 Contact / Enroll Now</h1>
-
-    <p style="text-align:center; margin-bottom:20px;">
-        Fill the form below to enroll or request information about any program.
-    </p>
-
-    <form class="contact-form" method="POST">
-        {% csrf_token %}
-
-        <input type="text" name="name" placeholder="Full Name" required>
-
-        <input type="text" name="phone" placeholder="Phone Number" required>
-
-        <input type="email" name="email" placeholder="Email (optional)">
-
-        <select name="program" required>
-            <option value="">Select Program</option>
-            <option value="waec">WAEC / NECO / JAMB</option>
-            <option value="igcse">IGCSE / GCSE</option>
-            <option value="ib">IB (International Baccalaureate)</option>
-            <option value="sat">SAT / PSAT</option>
-            <option value="ielts">IELTS / TOEFL</option>
-            <option value="alevel">A-Level</option>
-            <option value="gre">GRE / GMAT</option>
-            <option value="home">Home Tutoring</option>
-            <option value="online">Online Classes</option>
-        </select>
-
-        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-
-        <button type="submit">Send Message</button>
-    </form>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 Sure Success Education Centre</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}

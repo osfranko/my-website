@@ -1,32 +1,270 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Sure Success{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Sure Success Learning Hub
+        {% endblock %}
+    </title>
+
+    <meta
+        name="description"
+        content="Sure Success Learning Hub - Private Tutors, Home Lessons, WAEC, NECO, JAMB, SAT, IELTS, TOEFL, IGCSE, GCSE, IB, A-Level, German, French and Italian Language Programmes."
+    >
+
+    <link
+    rel="stylesheet"
+    href="{% static 'website/css/style.css' %}?v=20260715-32"
+>
+
+
+    <!-- =========================================
+         CRITICAL NAVBAR STYLES
+         Keeps navigation visible on every page
+    ========================================== -->
+
+    <style>
+
+        .navbar {
+            width: 100%;
+            min-height: 80px;
+
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+
+            padding: 12px 40px !important;
+
+            background: rgba(15, 23, 42, 0.96) !important;
+
+            position: sticky !important;
+            top: 0 !important;
+
+            z-index: 99999 !important;
+
+            box-sizing: border-box;
+        }
+
+
+        .navbar .logo {
+            display: flex !important;
+            align-items: center !important;
+
+            gap: 10px;
+
+            text-decoration: none !important;
+
+            flex-shrink: 0;
+        }
+
+
+        .navbar .site-logo {
+            width: 46px !important;
+            height: 46px !important;
+
+            max-width: 46px !important;
+            max-height: 46px !important;
+
+            object-fit: contain !important;
+
+            display: block !important;
+        }
+
+
+        .navbar .logo-text {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+
+        .navbar .logo-text h2 {
+            margin: 0 !important;
+
+            color: #ffffff !important;
+
+            font-size: 22px !important;
+
+            font-weight: 900 !important;
+
+            line-height: 1.1 !important;
+        }
+
+
+        .navbar .logo-text small {
+            color: #facc15 !important;
+
+            font-size: 13px !important;
+
+            font-weight: 800 !important;
+        }
+
+
+        .navbar nav {
+            display: flex !important;
+            align-items: center !important;
+
+            gap: 22px !important;
+
+            flex-wrap: wrap !important;
+        }
+
+
+        .navbar nav a {
+            display: inline-block !important;
+
+            color: #ffffff !important;
+
+            text-decoration: none !important;
+
+            font-size: 15px !important;
+
+            font-weight: 700 !important;
+
+            padding: 8px 4px !important;
+
+            transition: 0.3s ease;
+        }
+
+
+        .navbar nav a:hover {
+            color: #facc15 !important;
+        }
+
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                flex-direction: column !important;
+
+                gap: 12px !important;
+
+                padding: 12px 20px !important;
+            }
+
+
+            .navbar nav {
+                justify-content: center !important;
+
+                gap: 14px !important;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar .site-logo {
+                width: 40px !important;
+                height: 40px !important;
+
+                max-width: 40px !important;
+                max-height: 40px !important;
+            }
+
+
+            .navbar nav a {
+                font-size: 13px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- NAVBAR (GLOBAL FOR ALL PAGES) -->
+
+<!-- =========================================
+     NAVBAR
+========================================== -->
+
 <header class="navbar">
-    <div class="logo">🌟 Sure Success</div>
+
+
+    <!-- LOGO -->
+
+    <a href="/" class="logo">
+
+        <img
+            src="{% static 'website/images/sslh-logo.png' %}"
+            alt="Sure Success Learning Hub Logo"
+            class="site-logo"
+        >
+
+        <div class="logo-text">
+
+            <h2>Sure Success</h2>
+
+            <small>Learning Hub</small>
+
+        </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
 
     <nav>
+
         <a href="/">Home</a>
+
         <a href="/services/">Services</a>
+
         <a href="/programs/">Programs</a>
+
         <a href="/stats/">Stats</a>
+
         <a href="/testimonials/">Testimonials</a>
+
         <a href="/contact/">Contact</a>
+
     </nav>
+
+
 </header>
 
-<!-- PAGE CONTENT -->
-{% block content %}{% endblock %}
+
+<!-- =========================================
+     PAGE CONTENT
+========================================== -->
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+
+<!-- =========================================
+     SIMPLE FOOTER
+========================================== -->
+
+<footer class="footer">
+
+    <div class="footer-bottom">
+
+        © 2026
+        <strong>Sure Success Learning Hub</strong>
+        |
+        Building Confidence. Inspiring Excellence.
+
+    </div>
+
+</footer>
+
 
 </body>
+
 </html>

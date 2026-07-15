@@ -2,39 +2,86 @@
 
 {% block content %}
 
-<section class="hero" style="height: 40vh;">
-    <div class="hero-content">
-        <h1>Our Impact</h1>
-        <p>Results that speak for themselves</p>
-    </div>
-</section>
+<style>
+.stats-landing{
+    min-height:100vh;
+    background-image:url("/static/website/images/stats-bg.png?v=1");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    padding-top:115px;
+}
+</style>
 
-<section>
+<div class="stats-landing">
 
-    <div class="stats-grid">
+    <section class="hero">
 
-        <div class="stat-box">
-            <h3>1000+</h3>
-            <p>Students Taught</p>
+        <div class="hero-content">
+
+            <h1 class="animated-title">
+                <span>Our</span>
+                <span>Achievements</span>
+            </h1>
+
+            <h3 class="hero-tagline">
+                Numbers That Reflect Excellence
+            </h3>
+
+            <p class="hero-subtitle">
+                Our commitment to academic excellence has helped thousands of students
+                succeed in national and international examinations.
+            </p>
+
         </div>
 
-        <div class="stat-box">
-            <h3>95%</h3>
-            <p>Pass Rate</p>
+    </section>
+
+    <section class="stats-page">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <h2>2000+</h2>
+                <p>Students Mentored</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">👨‍🏫</div>
+                <h2>15+</h2>
+                <p>Years of Teaching Experience</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📚</div>
+                <h2>20+</h2>
+                <p>Subjects Offered</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🌍</div>
+                <h2>10+</h2>
+                <p>International Programmes</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💻</div>
+                <h2>100%</h2>
+                <p>Online Learning Support</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <h2>95%</h2>
+                <p>Student Success Rate</p>
+            </div>
+
         </div>
 
-        <div class="stat-box">
-            <h3>20+</h3>
-            <p>Qualified Teachers</p>
-        </div>
+    </section>
 
-        <div class="stat-box">
-            <h3>10+</h3>
-            <p>Years Experience</p>
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 {% endblock %}

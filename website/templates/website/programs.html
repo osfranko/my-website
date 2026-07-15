@@ -2,27 +2,147 @@
 
 {% block content %}
 
-<section class="hero" style="height: 50vh;">
-    <div class="hero-content">
+<style>
+.programs-landing{
+    min-height:100vh;
+    background-image:url("/static/website/images/programs-bg.png?v=1");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    padding-top:115px;
+}
+</style>
 
-        <h1>Our Programs</h1>
-        <p>WAEC • NECO • JAMB • IGCSE • GCSE • IB • SAT • IELTS • TOEFL • A-LEVEL • GRE • GMAT</p>
+<div class="programs-landing">
 
-    </div>
-</section>
+    <section class="hero">
 
-<section>
-    <div class="grid">
+        <div class="hero-content">
 
-        <div class="card">WAEC / NECO / JAMB</div>
-        <div class="card">IGCSE / GCSE</div>
-        <div class="card">IB (International Baccalaureate)</div>
-        <div class="card">SAT / PSAT</div>
-        <div class="card">IELTS / TOEFL</div>
-        <div class="card">A-LEVEL</div>
-        <div class="card">GRE / GMAT</div>
+            <h1 class="animated-title">
+                <span>Our</span>
+                <span>Programs</span>
+            </h1>
 
-    </div>
-</section>
+            <h3 class="hero-tagline">
+                National & International Examination Preparation
+            </h3>
+
+            <p class="hero-subtitle">
+                We prepare students for success in national examinations,
+                international qualifications, language proficiency tests,
+                university entrance examinations and professional academic programmes.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="programs-page">
+
+        <div class="program-grid">
+
+            <div class="program-box">
+                <div class="program-icon">🇳🇬</div>
+                <h2>WAEC • NECO • JAMB</h2>
+                <p>
+                    Complete preparation for all Nigerian secondary school
+                    examinations with experienced tutors.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">🎓</div>
+                <h2>IGCSE • GCSE</h2>
+                <p>
+                    British curriculum programmes for students preparing for
+                    Cambridge and Pearson examinations.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">🌍</div>
+                <h2>IB Programme</h2>
+                <p>
+                    International Baccalaureate tutoring for Middle Years and
+                    Diploma Programme students.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">📖</div>
+                <h2>SAT • PSAT</h2>
+                <p>
+                    Mathematics, Reading and Writing preparation for admission
+                    into international universities.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">✈️</div>
+                <h2>IELTS • TOEFL</h2>
+                <p>
+                    English language proficiency preparation for study,
+                    migration and employment abroad.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">🏆</div>
+                <h2>A-Level</h2>
+                <p>
+                    Intensive preparation in Mathematics, Sciences,
+                    Economics and other advanced subjects.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">💼</div>
+                <h2>GRE • GMAT</h2>
+                <p>
+                    Graduate school entrance examination coaching with
+                    quantitative and verbal reasoning support.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">🗣️</div>
+                <h2>Language Programmes</h2>
+                <p>
+                    English, French, German and Italian language courses
+                    for students, professionals and migrants.
+                </p>
+            </div>
+
+            <div class="program-box">
+                <div class="program-icon">💻</div>
+                <h2>Online Learning</h2>
+                <p>
+                    Live virtual classes with flexible schedules for students
+                    anywhere in the world.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="program-cta">
+
+        <h2>Choose the Right Programme</h2>
+
+        <p>
+            Whether you are preparing for WAEC, IGCSE, SAT, IELTS or learning a new language,
+            Sure Success Learning Hub has a programme designed for you.
+        </p>
+
+        <a href="/contact/" class="btn-primary">
+            Enrol Today
+        </a>
+
+    </section>
+
+</div>
 
 {% endblock %}

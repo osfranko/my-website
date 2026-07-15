@@ -1,0 +1,32 @@
+# ================= PYTHON =================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ================= VIRTUAL ENVIRONMENT =================
+venv/
+env/
+.venv/
+
+# ================= DJANGO LOCAL DATABASE =================
+db.sqlite3
+db.sqlite3-journal
+
+# ================= STATIC BUILD OUTPUT =================
+staticfiles/
+
+# ================= ENVIRONMENT VARIABLES =================
+.env
+.env.*
+!.env.example
+
+# ================= IDE =================
+.vscode/
+.idea/
+
+# ================= OPERATING SYSTEM =================
+.DS_Store
+Thumbs.db
+
+# ================= LOGS =================
+*.log

@@ -1,78 +1,126 @@
-{% load static %}
+{% extends "website/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}Admin Dashboard{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - Sure Success</title>
+{% block content %}
 
-    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
-</head>
-<!-- FLOATING WHATSAPP + CALL BUTTON -->
-<div class="floating-buttons">
+<div class="home-landing">
 
-    <a class="float-btn whatsapp-btn"
-       href="https://wa.me/2348035766979"
-       target="_blank">
-        💬
-    </a>
+    <section class="hero" style="min-height:35vh;">
+        <div class="hero-content">
+            <h1>Admin Dashboard</h1>
+            <h3 class="hero-tagline">Student Enquiries</h3>
+            <p class="hero-subtitle">Search, filter and manage enquiries safely.</p>
+        </div>
+    </section>
 
-    <a class="float-btn call-btn"
-       href="tel:+2348035766979">
-        📞
-    </a>
+    <section class="stats-page">
+        <div class="stats-grid">
 
-</div>
+            <div class="stat-card">
+                <div class="stat-icon">📩</div>
+                <h2>{{ total_contacts }}</h2>
+                <p>Total Enquiries</p>
+            </div>
 
-</body>
-</html>
-<body>
+            <div class="stat-card">
+                <div class="stat-icon">🔎</div>
+                <h2>{{ contacts|length }}</h2>
+                <p>Showing Results</p>
+            </div>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">📊 Admin Dashboard</div>
+        </div>
+    </section>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/contact">Contact</a>
-        <a href="/dashboard">Dashboard</a>
-    </nav>
-</header>
+    <section class="dashboard-section">
 
-<!-- DASHBOARD CONTENT -->
-<section style="padding:40px;">
+        <div class="dashboard-box">
 
-    <h1>📩 Student Enquiries</h1>
+            <h2>Student Enquiries</h2>
 
-    <p>Total Messages: {{ contacts|length }}</p>
+            <form method="GET" class="dashboard-search">
 
-    <div style="margin-top:20px; display:grid; gap:15px;">
+                <input type="text"
+                       name="search"
+                       placeholder="Search by name, phone, email, programme or message"
+                       value="{{ search_query }}">
 
-        {% for c in contacts %}
+                <select name="program">
+                    <option value="">All Programmes</option>
 
-        <div style="
-            background:#f1f5f9;
-            padding:15px;
-            border-radius:10px;
-            border-left:5px solid #38bdf8;
-        ">
+                    {% for p in programs %}
+                        <option value="{{ p }}" {% if program_filter == p %}selected{% endif %}>
+                            {{ p }}
+                        </option>
+                    {% endfor %}
+                </select>
 
-            <h3>{{ c.name }}</h3>
-            <p><b>Phone:</b> {{ c.phone }}</p>
-            <p><b>Email:</b> {{ c.email }}</p>
-            <p><b>Program:</b> {{ c.program }}</p>
-            <p><b>Message:</b> {{ c.message }}</p>
+                <button type="submit">Search</button>
+
+                <a href="/dashboard/" class="clear-btn">Clear</a>
+
+            </form>
+
+            <div class="dashboard-table-wrapper">
+
+                <table class="dashboard-table">
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Programme</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    {% for c in contacts %}
+
+                        <tr>
+                            <td>{{ c.name }}</td>
+                            <td>{{ c.phone }}</td>
+                            <td>{{ c.email }}</td>
+                            <td>{{ c.program }}</td>
+                            <td>{{ c.message|truncatechars:90 }}</td>
+                            <td>
+                                {{ c.created_at|date:"d M Y" }}<br>
+                                <small>{{ c.created_at|time:"H:i" }}</small>
+                            </td>
+                        </tr>
+
+                    {% empty %}
+
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding:30px;">
+                                No enquiry found.
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
 
-        {% empty %}
-            <p>No messages yet.</p>
-        {% endfor %}
+    </section>
 
-    </div>
+</div>
+@staff_member_required
+def delete_contact(request, contact_id):
+    contact = get_object_or_404(Contact, id=contact_id)
 
-</section>
+    if request.method == "POST":
+        contact.delete()
+        return redirect("dashboard")
 
-</body>
-</html>
+    return redirect("dashboard")
+
+{% endblock %}

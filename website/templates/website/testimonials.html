@@ -1,116 +1,167 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "website/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Testimonials - Sure Success</title>
-    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+{% block content %}
 
-    <style>
-        /* ===== TESTIMONIAL SECTION ===== */
-        body {
-            font-family: Arial, sans-serif;
-        }
+<style>
+.testimonials-landing{
+    min-height:100vh;
+    background-image:url("/static/website/images/testimonials-bg.png?v=1");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    padding-top:115px;
+}
+</style>
 
-        #testimonials {
-            background: #0f172a;
-            min-height: 100vh;
-            padding: 60px 20px;
-            color: white;
-            text-align: center;
-        }
+<div class="testimonials-landing">
 
-        .testimonial-container {
-            max-width: 700px;
-            margin: auto;
-            margin-top: 40px;
-        }
+    <section class="hero">
 
-        .testimonial {
-            display: none;
-            background: #111827;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 5px solid #38bdf8;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+        <div class="hero-content">
 
-        .testimonial.active {
-            display: block;
-        }
-    </style>
-</head>
+            <h1 class="animated-title">
+                <span>Success</span>
+                <span>Stories</span>
+            </h1>
 
-<body>
+            <h3 class="hero-tagline">
+                What Our Students & Parents Say
+            </h3>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">🌟 Sure Success</div>
+            <p class="hero-subtitle">
+                The greatest measure of our success is the achievements and satisfaction
+                of our students and parents around the world.
+            </p>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/services/">Services</a>
-        <a href="/programs/">Programs</a>
-        <a href="/stats/">Stats</a>
-        <a href="/testimonials/">Testimonials</a>
-        <a href="/contact/">Contact</a>
-    </nav>
-</header>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-
-    <h1>What Parents & Students Say</h1>
-
-    <div class="testimonial-container">
-
-        <div class="testimonial active">
-            💬 "Sure Success helped my son pass WAEC with excellent grades."<br>
-            — Mrs. Johnson
         </div>
 
-        <div class="testimonial">
-            💬 "I improved greatly in Mathematics after joining."<br>
-            — David A.
+    </section>
+
+    <section class="testimonial-slider-section">
+
+        <div class="testimonial-slider">
+
+            <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+
+            <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+
+            <div class="testimonial-slide active">
+
+                <div class="stars">★★★★★</div>
+
+                <div class="avatar">👩</div>
+
+                <p>
+                    "Sure Success transformed my daughter's confidence in Mathematics and Science.
+                    She passed WAEC with outstanding grades."
+                </p>
+
+                <h3>Mrs. Johnson</h3>
+
+                <small>Parent</small>
+
+            </div>
+
+            <div class="testimonial-slide">
+
+                <div class="stars">★★★★★</div>
+
+                <div class="avatar">👨</div>
+
+                <p>
+                    "The tutors explained difficult topics in a very simple way.
+                    I gained admission into university after passing JAMB."
+                </p>
+
+                <h3>David A.</h3>
+
+                <small>Student</small>
+
+            </div>
+
+            <div class="testimonial-slide">
+
+                <div class="stars">★★★★★</div>
+
+                <div class="avatar">👩</div>
+
+                <p>
+                    "Excellent IELTS coaching.
+                    I achieved my target score on my first attempt."
+                </p>
+
+                <h3>Angela M.</h3>
+
+                <small>IELTS Student</small>
+
+            </div>
+
+            <div class="testimonial-slide">
+
+                <div class="stars">★★★★★</div>
+
+                <div class="avatar">👨</div>
+
+                <p>
+                    "Professional teachers, friendly environment and excellent academic support.
+                    I highly recommend Sure Success Learning Hub."
+                </p>
+
+                <h3>Mr. Okafor</h3>
+
+                <small>Parent</small>
+
+            </div>
+
+            <div class="slider-dots">
+
+                <span class="dot active-dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+
+            </div>
+
         </div>
 
-        <div class="testimonial">
-            💬 "Excellent IELTS coaching. I passed in one attempt."<br>
-            — Angela M.
-        </div>
+    </section>
 
-        <div class="testimonial">
-            💬 "Very professional tutors. Highly recommended."<br>
-            — Mr. Okafor
-        </div>
+</div>
 
-    </div>
-
-</section>
-
-<!-- SCRIPT (IMPORTANT: BOTTOM OF PAGE) -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const testimonials = document.querySelectorAll(".testimonial");
-    let index = 0;
+let slideIndex = 0;
 
-    function showTestimonial() {
+const slides = document.querySelectorAll(".testimonial-slide");
+const dots = document.querySelectorAll(".dot");
 
-        testimonials.forEach(t => t.classList.remove("active"));
+function showSlide(n){
 
-        testimonials[index].classList.add("active");
+    slides.forEach(slide=>slide.classList.remove("active"));
+    dots.forEach(dot=>dot.classList.remove("active-dot"));
 
-        index = (index + 1) % testimonials.length;
-    }
+    if(n>=slides.length){slideIndex=0;}
+    else if(n<0){slideIndex=slides.length-1;}
+    else{slideIndex=n;}
 
-    showTestimonial();
-    setInterval(showTestimonial, 3000);
+    slides[slideIndex].classList.add("active");
+    dots[slideIndex].classList.add("active-dot");
 
-});
+}
+
+function changeSlide(n){
+    showSlide(slideIndex+n);
+}
+
+function currentSlide(n){
+    showSlide(n-1);
+}
+
+setInterval(()=>{
+    showSlide(slideIndex+1);
+},5000);
+
 </script>
 
-</body>
-</html>
+{% endblock %}
